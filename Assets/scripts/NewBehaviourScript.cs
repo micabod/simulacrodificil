@@ -11,23 +11,30 @@ public class NewBehaviourScript : MonoBehaviour
     float cantTotal;
     // Start is called before the first frame update
     void Start()
-    {        
-        if(cantTotal<0 || cantTotal>20,400 || cantTotal < 0 || cantTotal > 16,200){
-            Debug.Log("error");
-        }
+    {
         precioCampo = cantCampo * 1200;
-        precioPlatea=cantPlatea * 2000;
-        cantTotal= precioCampo + precioPlatea;
+        precioPlatea = cantPlatea * 2000;
+        cantTotal = precioCampo + precioPlatea;
+        if (cantCampo<0 || cantCampo>20400 || cantPlatea < 0 || cantPlatea > 16200){
+            Debug.Log("error");
+            return;
+        }
+
         Debug.Log("La recaudacion del campo es $" + precioCampo);
         Debug.Log("La recaudacion de platea es $" + precioPlatea);
+        Debug.Log("La recaudación total es $" + cantTotal);
+        int capacidadTotal = 20400 + 16200;
+        int entradasVendidas = cantCampo + cantPlatea;
+        int entradasVacantes = capacidadTotal - entradasVendidas;
+        Debug.Log("Cantidad de entradas vacantes: " + entradasVacantes);
 
-        if(cantTotal=16,200f + 20,400){
+        if (entradasVendidas==capacidadTotal){
             Debug.Log("Sold out");
         }
-        if (cantTotal>(16,200f + 20,400)/2){
+        if (entradasVendidas>capacidadTotal/2){
             Debug.Log("El festival fue un exito");
         }
-        else if{
+        else{
             Debug.Log("Debemos mejorar la convocatoria");
         }
 
